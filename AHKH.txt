@@ -1,0 +1,1029 @@
+#ClipboardTimeout@#ClipboardTimeout Milliseconds@Changes how long the script keeps trying to access the clipboard when the first attempt fails.
+#CommentFlag@#CommentFlag NewString@Changes the script's comment symbol from semicolon to some other string.`Note: This directive is not recommended for use in new scripts because a) it does more harm than good and b) it is no longer available in AutoHotkey v2.
+#ErrorStdOut@#ErrorStdOut@Sends any syntax error that prevents a script from launching to stderr rather than displaying a dialog.
+#EscapeChar@#EscapeChar NewChar@Changes the script's escape character (e.g. accent vs. backslash).`Note: This directive is not recommended for use in new scripts because a) it does more harm than good and b) it is no longer available in AutoHotkey v2.
+#HotkeyInterval@#HotkeyInterval Milliseconds@Along with '#MaxHotkeysPerInterval', specifies the rate of hotkey activations beyond which a warning dialog will be displayed.
+#HotkeyModifierTimeout@#HotkeyModifierTimeout Milliseconds@Affects the behavior of hotkey modifiers: 'Ctrl', 'Alt', 'Win', and 'Shift'.
+#Hotstring@#Hotstring NewOptions@Changes hotstring options or ending characters.
+#If@#If [Expression]@Creates context-sensitive hotkeys and hotstrings. Such hotkeys perform a different action (or none at all) depending on the result of an expression.
+#IfTimeout@#IfTimeout Timeout@Sets the maximum time that may be spent evaluating a single #If expression.
+#IfWinActive@#IfWinActive [WinTitle, WinText]@Creates context-sensitive hotkeys and hotstrings. Such hotkeys perform a different action (or none at all) depending on the type of window that is active or exists.`The #IfWin directives are positional: they affect all hotkeys and hotstrings physically beneath them in the script.
+#IfWinExist@#IfWinExist [WinTitle, WinText]@Creates context-sensitive hotkeys and hotstrings. Such hotkeys perform a different action (or none at all) depending on the type of window that is active or exists.
+#IfWinNotActive@#IfWinNotActive [WinTitle, WinText]@Creates context-sensitive hotkeys and hotstrings. Such hotkeys perform a different action (or none at all) depending on the type of window that is active or exists.
+#IfWinNotExist@#IfWinNotExist [WinTitle, WinText]@Creates context-sensitive hotkeys and hotstrings. Such hotkeys perform a different action (or none at all) depending on the type of window that is active or exists.
+#Include@#Include FileOrDirName@Causes the script to behave as though the specified file's contents are present at this exact position.`#Include ensures that FileName is included only once, even if multiple inclusions are encountered for it
+#IncludeAgain@#IncludeAgain FileOrDirName@Causes the script to behave as though the specified file's contents are present at this exact position.`#IncludeAgain allows multiple inclusions of the same file, while being the same as #Include in all other respects.
+#InputLevel@#InputLevel [Level]@Controls which artificial keyboard and mouse events are ignored by hotkeys and hotstrings. [Level] - An integer between 0 and 100. If omitted, it defaults to 0.
+#InstallKeybdHook@#InstallKeybdHook@Forces the unconditional installation of the keyboard hook.
+#InstallMouseHook@#InstallMouseHook@Forces the unconditional installation of the mouse hook.
+#KeyHistory@#KeyHistory MaxEvents@Sets the maximum number of keyboard and mouse events displayed by the KeyHistory window. You can set it to 0 to disable key history.
+#LTrim@#LTrim On|Off@LTrim: Omits spaces and tabs at the beginning of each line. This is primarily used to allow the continuation section to be indented. Also, this option may be turned on for multiple continuation sections by specifying #LTrim on a line by itself. #LTrim is positional: it affects all continuation sections physically beneath it. The setting may be turned off via #LTrim Off.
+#MaxHotkeysPerInterval@#MaxHotkeysPerInterval Value@Along with #HotkeyInterval, specifies the rate of hotkey activations beyond which a warning dialog will be displayed.
+#MaxMem@#MaxMem Megabytes@Sets the maximum capacity of each variable to the specified number of megabytes.
+#MaxThreads@#MaxThreads Value@Sets the maximum number of simultaneous threads.
+#MaxThreadsBuffer@#MaxThreadsBuffer On|Off@Causes some or all hotkeys to buffer rather than ignore keypresses when their #MaxThreadsPerHotkey limit has been reached.
+#MaxThreadsPerHotkey@#MaxThreadsPerHotkey Value@Sets the maximum number of simultaneous threads per hotkey or hotstring.
+#MenuMaskKey@#MenuMaskKey KeyName@Changes which key is used to mask 'Win' or 'Alt' keyup events.
+#NoEnv@#NoEnv@Avoids checking empty variables to see if they are environment variables (recommended for all new scripts).
+#NoTrayIcon@#NoTrayIcon@Disables the showing of a tray icon.
+#Persistent@#Persistent@Keeps a script permanently running (that is, until the user closes it or ExitApp is encountered).
+#SingleInstance@#SingleInstance [force|ignore|prompt|off]@Determines whether a script is allowed to run again when it is already running.
+#UseHook@#UseHook [On|Off]@Forces the use of the hook to implement all or some keyboard hotkeys.
+#Warn@#Warn [WarningType, WarningMode]@Enables or disables warnings for specific conditions which may indicate an error, such as a typo or missing "global" declaration.
+#WinActivateForce@#WinActivateForce@Skips the gentle method of activating a window and goes straight to the forceful method.
+.__Call()@.__Call(Name, [Params...])@ 
+.__Delete()@.__Delete()@ 
+.__Get()@.__Get([Key, Key2, ...])@ 
+.__Handle@.__Handle@ 
+.__New()@.__New()@ 
+.__Set()@.__Set([Key, Key2, ...], Value)@ 
+.AtEOF@.AtEOF@ 
+.Clone()@.Clone()@Returns a shallow copy of the object.
+.Close()@.Close()@ 
+.Count()@.Count()@Returns the number of key-value pairs present in the object.
+.Delete()@.Delete()@ 
+.Encoding@.Encoding@ 
+.GetAddress()@.GetAddress(Key)@Returns the current address of the field's string buffer, if it has one.
+.GetCapacity()@.GetCapacity()@Returns the current capacity of an object or one of its fields.`Returns an empty string if the field does not exist or does not contain a string.
+.HasKey()@.HasKey(Key)@Returns true if Key is associated with a value (even '') within Object, otherwise false.
+.Insert()@.Insert(Key, Value)@Inserts key-value pairs into the object, automatically adjusting existing keys if given an integer key.`Deprecated: Insert is not recommended for use in new scripts. Use InsertAt, Push, ObjRawSet or a simple assignment instead.
+.InsertAt()@.InsertAt(Key, Value)@Inserts one or more values at a given position within a linear array.
+.IsBuiltIn@.IsBuiltIn@ 
+.IsOptional()@.IsOptional(ParamIndex)@ 
+.IsVariadic@.IsVariadic@ 
+.Length@.Length@ 
+.MaxIndex()@.MaxIndex()@If any integer keys are present, MaxIndex returns the highest. Otherwise an empty string is returned.
+.MaxParams@.MaxParams@ 
+.MinIndex()@.MinIndex()@If any integer keys are present, MinIndex returns the lowest. Otherwise an empty string is returned.
+.MinParams@.MinParams@ 
+.Name@.Name@ 
+.NewEnum()@._NewEnum()@Returns a new enumerator to enumerate this object's key-value pairs. This method is usually not called directly, but by the for-loop.
+.Pop(@.Pop()@Removes and returns the last array element.
+.Pos@.Pos@ 
+.Position@.Position@ 
+.Push(@.Push(Value)@Appends values to the end of an array.
+.RawRead()@.RawRead(VarOrAddress, Bytes)@ 
+.RawWrite()@.RawWrite(VarOrAddress, Bytes)@ 
+.Read()@.Read([Characters])@ 
+.ReadChar()@.ReadChar()@ 
+.ReadDouble()@.ReadDouble()@ 
+.ReadFloat()@.ReadFloat()@ 
+.ReadInt()@.ReadInt()@ 
+.ReadInt64()@.ReadInt64()@ 
+.ReadLine()@.ReadLine()@ 
+.ReadShort()@.ReadShort()@ 
+.ReadUChar()@ReadUChar()@ 
+.ReadUInt()@.ReadUInt()@ 
+.ReadUShort()@.ReadUShort()@ 
+.Remove()@.Remove(Key)@Removes key-value pairs from an object.`Deprecated: Remove is not recommended for use in new scripts. Use RemoveAt, Delete or Pop instead.
+.RemoveAt()@.RemoveAt(Pos, Length)@Removes items from the given position in a linear array.
+.Seek()@.Seek(Distance, [Origin = 0])@ 
+.SetCapacity()@.SetCapacity(MaxItems)@Adjusts the capacity of an object or one of its fields.
+.Tell()@.Tell()@ 
+.Write()@.Write(String)@ 
+.WriteChar()@.WriteChar(Num)@ 
+.WriteDouble()@.WriteDouble(Num)@ 
+.WriteFloat()@.WriteFloat(Num)@ 
+.WriteInt()@.WriteInt(Num)@ 
+.WriteInt64()@.WriteInt64(Num)@ 
+.WriteLine()@.WriteLine([String])@ 
+.WriteShort()@.WriteShort(Num)@ 
+.WriteUChar()@.WriteUChar(Num)@ 
+.WriteUInt()@.WriteUInt(Num)@ 
+.WriteUShort()@.WriteUShort(Num)@ 
+{AltDown}@{AltDown}@ 
+{AltUp}@{AltUp}@ 
+{Blind}@{Blind}@ 
+{Click}@{Click}@ 
+{CtrlDown}@{CtrlDown}@ 
+{CtrlUp}@{CtrlUp}@ 
+{LWinDown}@{LWinDown}@ 
+{LWinUp}@{LWinUp}@ 
+{Raw}@{Raw}@ 
+{RWinDown}@{RWinDown}@ 
+{RWinUp}@{RWinUp}@ 
+{ShiftDown}@{ShiftDown}@ 
+{ShiftUp}@{ShiftUp}@ 
+A_AhkPath@A_AhkPath@ 
+A_AhkVersion@A_AhkVersion@ 
+A_AppData@A_AppData@ 
+A_AppDataCommon@A_AppDataCommon@ 
+A_Args@A_Args@Read/write: Contains an array of command line parameters. For details, see Passing Command Line Parameters to a Script.
+A_AutoTrim@A_AutoTrim@The current mode (On or Off) set by AutoTrim.
+A_BatchLines@A_BatchLines@ 
+A_CaretX@A_CaretX@ 
+A_CaretY@A_CaretY@ 
+A_ComputerName@A_ComputerName@ 
+A_ComSpec@A_ComSpec@Contains the same string as the environment's ComSpec variable. Often used with Run/RunWait. For example: `` C:\Windows\system32\cmd.exe
+A_ControlDelay@A_ControlDelay@ 
+A_CoordModeCaret@A_CoordModeCaret@The current mode (Window, Client or Screen) set by CoordMode.
+A_CoordModeMenu@A_CoordModeMenu@The current mode (Window, Client or Screen) set by CoordMode.
+A_CoordModeMouse@A_CoordModeMouse@The current mode (Window, Client or Screen) set by CoordMode.
+A_CoordModePixel@A_CoordModePixel@The current mode (Window, Client or Screen) set by CoordMode.
+A_CoordModeToolTip@A_CoordModeToolTip@The current mode (Window, Client or Screen) set by CoordMode.
+A_Cursor@A_Cursor@ 
+A_DD@A_DD@ 
+A_DDD@A_DDD@ 
+A_DDDD@A_DDDD@ 
+A_DefaultGui@A_DefaultGui@The name or number of the current thread's default GUI.
+A_DefaultListView@A_DefaultListView@The variable name or HWND of the ListView control upon which the ListView functions operate. If the default GUI lacks a ListView, this variable is blank.
+A_DefaultMouseSpeed@A_DefaultMouseSpeed@ 
+A_DefaultTreeView@A_DefaultTreeView@The variable name or HWND of the TreeView control upon which the TreeView functions operate. If the default GUI lacks a TreeView, this variable is blank.
+A_Desktop@A_Desktop@The full path and name of the folder containing the current user's desktop files.
+A_DesktopCommon@A_DesktopCommon@ 
+A_DetectHiddenText@A_DetectHiddenText@ 
+A_DetectHiddenWindows@A_DetectHiddenWindows@ 
+A_EndChar@A_EndChar@ 
+A_EventInfo@A_EventInfo@ 
+A_ExitReason@A_ExitReason@ 
+A_FileEncoding@A_FileEncoding@ 
+A_FormatFloat@A_FormatFloat@ 
+A_FormatInteger@A_FormatInteger@ 
+A_Gui@A_Gui@ 
+A_GuiControl@A_GuiControl@ 
+A_GuiControlEvent@A_GuiControlEvent@ 
+A_GuiEvent@A_GuiEvent@ 
+A_GuiHeight@A_GuiHeight@ 
+A_GuiWidth@A_GuiWidth@ 
+A_GuiX@A_GuiX@ 
+A_GuiY@A_GuiY@ 
+A_Hour@A_Hour@ 
+A_IconFile@A_IconFile@ 
+A_IconHidden@A_IconHidden@ 
+A_IconNumber@A_IconNumber@ 
+A_IconTip@A_IconTip@ 
+A_Index@A_Index@ 
+A_IPAddress1@A_IPAddress1@ 
+A_IPAddress2@A_IPAddress2@ 
+A_IPAddress3@A_IPAddress3@ 
+A_IPAddress4@A_IPAddress4@ 
+A_Is64bitOS@A_Is64bitOS@ 
+A_IsAdmin@A_IsAdmin@ 
+A_IsCompiled@A_IsCompiled@ 
+A_IsCritical@A_IsCritical@ 
+A_IsPaused@A_IsPaused@Contains 1 if the thread immediately underneath the current thread is paused. Otherwise it contains 0.
+A_IsSuspended@A_IsSuspended@Contains 1 if the script is suspended and 0 otherwise.
+A_IsUnicode@A_IsUnicode@ 
+A_KeyDelay@A_KeyDelay@The current delay or duration set by SetKeyDelay (always decimal, not hex). A_KeyDuration requires [v1.1.23+].
+A_Language@A_Language@ 
+A_LastError@A_LastError@ 
+A_LineFile@A_LineFile@The full path and name of the file to which A_LineNumber belongs, which will be the same as A_ScriptFullPath unless the line belongs to one of a non-compiled script's #Include files.
+A_LineNumber@A_LineNumber@The number of the currently executing line within the script (or one of its #Include files). This line number will match the one shown by ListLines; it can be useful for error reporting such as this example: MsgBox Could not write to log file (line number %A_LineNumber%).
+A_ListLines@A_ListLines@Contains 1 if 'ListLines' is enabled. Otherwise it contains 0.
+A_LoopField@A_LoopField@ 
+A_LoopFileAttrib@A_LoopFileAttrib@ 
+A_LoopFileDir@A_LoopFileDir@ 
+A_LoopFileExt@A_LoopFileExt@The file's extension (e.g. TXT, DOC, or EXE). The period (.) is not included.
+A_LoopFileFullPath@A_LoopFileFullPath@The path and name of the file/folder currently retrieved. If FilePattern contains a relative path rather than an absolute path, the path here will also be relative. In addition, any short (8.3) folder names in FilePattern will still be short (see next item to get the long version).
+A_LoopFileLongPath@A_LoopFileLongPath@This is different than A_LoopFileFullPath in the following ways: 1) It always contains the absolute/complete path of the file even if FilePattern contains a relative path; 2) Any short (8.3) folder names in FilePattern itself are converted to their long names; 3) Characters in FilePattern are converted to uppercase or lowercase to match the case stored in the file system. This is useful for converting file names -- such as those passed into a script as command line parameters -- to their exact path names as shown by Explorer.
+A_LoopFileName@A_LoopFileName@The name of the file or folder currently retrieved (without the path).
+A_LoopFileShortName@A_LoopFileShortName@The 8.3 short name, or alternate name of the file.
+A_LoopFileShortPath@A_LoopFileShortPath@The 8.3 short path and name of the file/folder currently retrieved.
+A_LoopFileSize@A_LoopFileSize@The size in bytes of the file currently retrieved. Files larger than 4 gigabytes are also supported.
+A_LoopFileSizeKB@A_LoopFileSizeKB@ The size in Kbytes of the file currently retrieved, rounded down to the nearest integer. 
+A_LoopFileSizeMB@A_LoopFileSizeMB@The size in Mbytes of the file currently retrieved, rounded down to the nearest integer.
+A_LoopFileTimeAccessed@A_LoopFileTimeAccessed@The time the file was last accessed. Format YYYYMMDDHH24MISS.
+A_LoopFileTimeCreated@A_LoopFileTimeCreated@The time the file was created. Format YYYYMMDDHH24MISS.
+A_LoopFileTimeModified@A_LoopFileTimeModified@ 
+A_LoopReadLine@A_LoopReadLine@ 
+A_LoopRegKey@A_LoopRegKey@ 
+A_LoopRegName@A_LoopRegName@ 
+A_LoopRegSubkey@A_LoopRegSubkey@ 
+A_LoopRegTimeModified@A_LoopRegTimeModified@ 
+A_LoopRegType@A_LoopRegType@ 
+A_MDay@A_MDay@ 
+A_Min@A_Min@Current 2-digit minute (00-59).
+A_MM@A_MM@Current 2-digit month (01-12). Synonymous with A_Mon.
+A_MMM@A_MMM@Current month's abbreviation in the current user's language, e.g. Jul
+A_MMMM@A_MMMM@Current month's full name in the current user's language, e.g. July
+A_Mon@A_Mon@Current 2-digit month (01-12).
+A_MouseDelay@A_MouseDelay@ 
+A_MSec@A_MSec@ 
+A_MyDocuments@A_MyDocuments@The full path and name of the current user's "My Documents" folder. Unlike most of the similar variables, if the folder is the root of a drive, the final backslash is not included
+A_Now@A_Now@The current local time in YYYYMMDDHH24MISS format.
+A_NowUTC@A_NowUTC@The current Coordinated Universal Time (UTC) in YYYYMMDDHH24MISS format. UTC is essentially the same as Greenwich Mean Time (GMT).
+A_NumBatchLines@A_NumBatchLines@ 
+A_OSType@A_OSType@ 
+A_OSVersion@A_OSVersion@ 
+A_PriorHotkey@A_PriorHotkey@ 
+A_PriorKey@A_PriorKey@The name of the last key which was pressed prior to the most recent key-press or key-release, or blank if no applicable key-press can be found in the key history. All input generated by AutoHotkey scripts is excluded. For this variable to be of use, the keyboard or mouse hook must be installed and key history must be enabled.
+A_ProgramFiles@A_ProgramFiles@The Program Files directory.
+A_Programs@A_Programs@The full path and name of the Programs folder in the current user's Start Menu.
+A_ProgramsCommon@A_ProgramsCommon@The full path and name of the Programs folder in the all-users Start Menu.
+A_PtrSize@A_PtrSize@ 
+A_RegView@A_RegView@The current registry view as set by SetRegView.
+A_ScreenDPI@A_ScreenDPI@Number of pixels per logical inch along the screen width.
+A_ScreenHeight@A_ScreenHeight@The height of the primary monitor
+A_ScreenWidth@A_ScreenWidth@The width of the primary monitor
+A_ScriptDir@A_ScriptDir@The full path of the directory where the current script is located. The final backslash is omitted (even for root directories).
+A_ScriptFullPath@A_ScriptFullPath@The full path of the current script
+A_ScriptHwnd@A_ScriptHwnd@The unique ID (HWND/handle) of the script's hidden main window.
+A_ScriptName@A_ScriptName@The file name of the current script, without its path, e.g. MyScript.ahk. 
+A_Sec@A_Sec@ 
+A_SendLevel@A_SendLevel@The current SendLevel setting (an integer between 0 and 100, inclusive).
+A_SendMode@A_SendMode@The current mode (Event, Input, Play or InputThenPlay) set by SendMode.
+A_Space@A_Space@This variable contains a single space character. See AutoTrim for details.
+A_StartMenu@A_StartMenu@The full path and name of the current user's Start Menu folder
+A_StartMenuCommon@A_StartMenuCommon@The full path and name of the all-users Start Menu folder.
+A_Startup@A_Startup@The full path and name of the Startup folder in the current user's Start Menu.
+A_StartupCommon@A_StartupCommon@The full path and name of the Startup folder in the all-users Start Menu.
+A_StoreCapsLockMode@A_StoreCapsLockMode@The current mode (On or Off) set by SetStoreCapsLockMode.
+A_StringCaseSense@A_StringCaseSense@ 
+A_Tab@A_Tab@ 
+A_Temp@A_Temp@ 
+A_ThisFunc@A_ThisFunc@ 
+A_ThisHotkey@A_ThisHotkey@ 
+A_ThisLabel@A_ThisLabel@ 
+A_ThisMenu@A_ThisMenu@ 
+A_ThisMenuItem@A_ThisMenuItem@The name of the most recently selected custom menu item (blank if none).
+A_ThisMenuItemPos@A_ThisMenuItemPos@ 
+A_TickCount@A_TickCount@ 
+A_TimeIdle@A_TimeIdle@ 
+A_TimeIdleKeyboard@A_TimeIdleKeyboard@If the keyboard hook is installed, this is the number of milliseconds that have elapsed since the system last received physical keyboard input. Otherwise, this variable is equivalent to A_TimeIdle.
+A_TimeIdleMouse@A_TimeIdleMouse@If the mouse hook is installed, this is the number of milliseconds that have elapsed since the system last received physical mouse input. Otherwise, this variable is equivalent to A_TimeIdle.
+A_TimeIdlePhysical@A_TimeIdlePhysical@ 
+A_TimeSincePriorHotkey@A_TimeSincePriorHotkey@ 
+A_TimeSinceThisHotkey@A_TimeSinceThisHotkey@ 
+A_TitleMatchMode@A_TitleMatchMode@ 
+A_TitleMatchModeSpeed@A_TitleMatchModeSpeed@ 
+A_UserName@A_UserName@ 
+A_WDay@A_WDay@ 
+A_WinDelay@A_WinDelay@ 
+A_WinDir@A_WinDir@ 
+A_WorkingDir@A_WorkingDir@ 
+A_YDay@A_YDay@ 
+A_Year@A_Year@ 
+A_YWeek@A_YWeek@ 
+A_YYYY@A_YYYY@ 
+Abort@Abort@ 
+AboveNormal@AboveNormal@ 
+Abs()@Abs(Number)@Returns the absolute value of Number.
+Abs@Abs@ 
+ACos()@ACos(Number)@Returns the arccosine (the number whose cosine is Number) in radians.
+ACos@ACos@ 
+Add@Add@ 
+ahk_class@ahk_class@A window class is a set of attributes that the system uses as a template to create a window. In other words, the class name of the window identifies what type of window it is. To use a window class, specify ahk_class ExactClassName as shown by Window Spy. ExactClassName can be retrieved by WinGetClass.
+ahk_exe@ahk_exe@Use ahk_exe to identify a window belonging to any process with the given name or path.
+ahk_group@ahk_group@Use ahk_group to identify a window or windows matching the rules contained by a previously defined window group.
+ahk_id@ahk_id@Each window or control has a unique ID, also known as a HWND (short for handle to window).
+ahk_pid@ahk_pid@Use ahk_pid to identify a window belonging to a specific process. The process identifier (PID) is typically retrieved by WinGet, Run or Process.
+All@All@ 
+Alnum@Alnum@ 
+Alpha@Alpha@ 
+Alt@Alt@ 
+AltDown@AltDown@ 
+AltSubmit@AltSubmit@ 
+AltTab@AltTab@ 
+AltTabAndMenu@AltTabAndMenu@ 
+AltTabMenu@AltTabMenu@ 
+AltTabMenuDismiss@AltTabMenuDismiss@ 
+AltUp@AltUp@ 
+AlwaysOnTop@AlwaysOnTop@ 
+And@And@ 
+AppsKey@AppsKey@ 
+Asc()@Asc(String)@Returns the numeric value of the first byte or UTF-16 code unit in the specified string.
+Asc@Asc@ 
+ASin()@ASin(Number)@Returns the arcsine (the number whose sine is Number) in radians.
+ASin@ASin@ 
+ATan()@ATan(Number)@Returns the arctangent (the number whose tangent is Number) in radians.
+ATan@ATan@ 
+AutoSize@AutoSize@ 
+AutoTrim@AutoTrim On|Off@Determines whether traditional assignments like Var1 = %Var2% omit spaces and tabs from the beginning and end of Var2.
+Background@Background@ 
+BackgroundTrans@BackgroundTrans@ 
+BackSpace@BackSpace@ 
+BelowNormal@BelowNormal@ 
+Between@Between@ 
+BitAnd@BitAnd@ 
+BitNot@BitNot@ 
+BitOr@BitOr@ 
+BitShiftLeft@BitShiftLeft@ 
+BitShiftRight@BitShiftRight@ 
+BitXOr@BitXOr@ 
+BlockInput@BlockInput On|Off|Send|Mouse|SendAndMouse|Default|MouseMove|MouseMoveOff@Disables or enables the user's ability to interact with the computer via keyboard and mouse.
+bold@bold@ 
+Border@Border@ 
+Bottom@Bottom@ 
+Break@Break@Exits (terminates) any type of loop statement.
+Browser_Back@Browser_Back@ 
+Browser_Favorites@Browser_Favorites@ 
+Browser_Forward@Browser_Forward@ 
+Browser_Home@Browser_Home@ 
+Browser_Refresh@Browser_Refresh@ 
+Browser_Search@Browser_Search@ 
+Browser_Stop@Browser_Stop@ 
+BS@BS@ 
+Button@Button@ 
+Buttons@Buttons@ 
+ByRef@ByRef@ 
+Cancel@Cancel@ 
+Capacity@Capacity@ 
+CapsLock@CapsLock@ 
+Caption@Caption@ 
+Catch@Catch [OutputVar]@Specifies the code to execute if an exception is raised during execution of a try statement.
+Ceil()@Ceil(Number)@Returns Number rounded up to the nearest integer (without any .00 suffix).
+Ceil@Ceil@ 
+Center@Center@ 
+Check@Check@ 
+Check3@Check3@ 
+Checkbox@Checkbox@ 
+Checked@Checked@ 
+CheckedGray@CheckedGray@ 
+Choose@Choose@ 
+ChooseString@ChooseString@ 
+Chr()@Chr(Number)@Returns the string (usually a single character) corresponding to the character code indicated by the specified number.
+Chr@Chr@ 
+Click@Click@ 
+Clipboard@Clipboard@ 
+ClipboardAll@ClipboardAll@ 
+ClipWait@ClipWait [SecondsToWait, 1]@Waits until the clipboard contains data.
+Close@Close@ 
+Color@Color@ 
+ComboBox@ComboBox@ 
+ComObjActive()@ComObjActive(CLSID)@Retrieves a running object that has been registered with OLE.
+ComObjArray()@ComObjArray(VarType, Count1 [, Count2, ... Count8])@Creates a SafeArray for use with COM.
+ComObjConnect()@ComObjConnect(ComObject [, Prefix])@Connects the object's event sources to functions with a given prefix.
+ComObjCreate()@ComObjCreate(CLSID [, IID])@Creates a COM object.
+ComObject()@ComObject(VarType, Value [, Flags])@Creates an object representing a typed value to be passed as a parameter or return value..
+ComObjEnwrap()@ComObjEnwrap(DispPtr)@Wraps a raw IDispatch pointer in a usable object and automatically calls AddRef.`Deprecated
+ComObjError()@ComObjError([Enable])@Enables or disables notification of COM errors.
+ComObjFlags()@ComObjFlags(ComObject [, NewFlags, Mask])@Retrieves or changes flags which control a COM wrapper object's behaviour.
+ComObjGet()@ComObjGet(Name)@Returns a reference to an object provided by a COM component.
+ComObjMissing()@ComObjMissing()@Creates an object which may be used in place of an optional parameter's default value when calling a method of a COM object.`Deprecated
+ComObjParameter()@ComObjParameter(VarType, Value [, Flags])@Deprecated. Use ComObject() instead.
+ComObjQuery()@ComObjQuery(ComObject, [SID, ] IID)@Queries a COM object for an interface or service.
+ComObjType()@ComObjType(ComObject, "Name|IID")@Retrieves type information from a COM object.
+ComObjUnwrap()@ComObjUnwrap(ComObject)@Unwraps a raw IDispatch pointer in a usable object and automatically calls AddRef.`Deprecated
+ComObjValue()@ComObjValue(ComObject)@Retrieves the value or pointer stored in a COM wrapper object.
+ComSpec@ComSpec@ 
+Contains@Contains@ 
+Continue@Continue@Skips the rest of a loop statement's current iteration and begins a new one.
+Control@Control Cmd [, Value, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]@Makes a variety of changes to a control.
+ControlClick@ControlClick [Control-or-Pos, WinTitle, WinText, WhichButton, ClickCount, Options, ExcludeTitle, ExcludeText]@Sends a mouse button or mouse wheel event to a control.
+ControlFocus@ControlFocus [Control, WinTitle, WinText, ExcludeTitle, ExcludeText]@Sets input focus to a given control on a window.
+ControlGet@ControlGet OutputVar, Cmd, [Value, Control, WinTitle, WinText, ExcludeTitle, ExcludeText@Retrieves various types of information about a control.
+ControlGetFocus@ControlGetFocus OutputVar, [WinTitle, WinText, ExcludeTitle, ExcludeText]@Retrieves which control of the target window has input focus, if any.
+ControlGetPos@ControlGetPos [X, Y, Width, Height, Control, WinTitle, WinText, ExcludeTitle@Retrieves the position and size of a control.
+ControlGetText@ControlGetText OutputVar [, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]@Retrieves text from a control.
+ControlList@ControlList@ 
+ControlMove@ControlMove Control, X, Y, Width, Height [, WinTitle, WinText, ExcludeTitle@Moves or resizes a control.
+ControlSend@ControlSend [Control, Keys, WinTitle, WinText, ExcludeTitle, ExcludeText]@Sends simulated keystrokes to a window or control.
+ControlSendRaw@ControlSendRaw [Control, Keys, WinTitle, WinText, ExcludeTitle, ExcludeText]@Sends simulated keystrokes to a window or control. ControlSendRaw sends the keystrokes in the Keys parameter without translating {Enter} to Enter, ^c to Control+C, etc.
+ControlSetText@ControlSetText Control, NewText [, WinTitle, WinText, ExcludeTitle, ExcludeText]@Changes the text of a control.
+CoordMode@CoordMode ToolTip|Pixel|Mouse [, Screen|Relative]@Sets coordinate mode for various commands to be relative to either the active window or the screen.
+Cos()@Cos(Number)@Returns the trigonometric cosine of Number.
+Cos@Cos@ 
+Count@Count@ 
+Critical@Critical ${1|Off, On|}@Prevents the current thread from being interrupted by other threads, or enables it to be interrupted.
+Ctrl@Ctrl@ 
+CtrlBreak@CtrlBreak@ 
+CtrlDown@CtrlDown@ 
+CtrlUp@CtrlUp@ 
+Date@Date@ 
+DateTime@DateTime@ 
+Days@Days@ 
+DDL@DDL@ 
+Default@Default@ 
+Del@Del@ 
+Delete@Delete@ 
+DeleteAll@DeleteAll@ 
+Delimiter@Delimiter@ 
+Deref@Deref@ 
+Destroy@Destroy@ 
+DetectHiddenText@DetectHiddenText On|Off@Determines whether invisible text in a window is "seen" for the purpose of finding the window. This affects commands such as IfWinExist and WinActivate.
+DetectHiddenWindows@DetectHiddenWindows On|Off@Determines whether invisible windows are "seen" by the script.
+Digit@Digit@ 
+Disable@Disable@ 
+Disabled@Disabled@ 
+DllCall()@DllCall("[DllFile\]Function", [Type1, Arg1, Type2, Arg2, "Cdecl ReturnType"])@Calls a function inside a DLL, such as a standard Windows API function.
+Down@Down@ 
+DPIScale@DPIScale@ 
+Drive@Drive Sub-command [, Drive, Value]@Ejects/retracts the tray in a CD or DVD drive, or sets a drive's volume label.
+DriveGet@DriveGet OutputVar, Cmd [, Value]@Retrieves various types of information about the computer's drive(s).
+DriveSpaceFree@DriveSpaceFree OutputVar, C:\@Retrieves the free disk space of a drive, in Megabytes.
+DropDownList@DropDownList@ 
+Edit@Edit@Opens the current script for editing in the associated editor.
+Eject@Eject@ 
+Else@Else@Specifies one or more statements to execute if an If statement evaluates to false.
+Enable@Enable@ 
+Enabled@Enabled@ 
+End@End@ 
+Enter@Enter@ 
+EnvAdd@EnvAdd Var, Value [, TimeUnits]@Sets a variable to the sum of itself plus the given value (can also add or subtract time from a date-time value). Synonymous with: var += value.
+EnvDiv@EnvDiv Var, Value@Sets a variable to itself divided by the given value.`Deprecated: This command is not recommended for use in new scripts. Use Var := Var / Value or Var /= Value instead.
+EnvGet@EnvGet OutputVar, EnvVarName@Retrieves an environment variable.
+EnvMult@EnvMult Var, Value@Sets a variable to itself times the given value.`Deprecated: This command is not recommended for use in new scripts. Use Var := Var * Value or Var *= Value instead.
+EnvSet@EnvSet EnvVar, Value@Writes a value to a variable contained in the environment.
+EnvSub@EnvSub Var, Value [, TimeUnits]@Sets a variable to itself minus the given value (can also compare date-time values). Synonymous with: Var -= Value.
+EnvUpdate@EnvUpdate@Notifies the OS and all running applications that environment variable(s) have changed.
+Error@Error@ 
+ErrorLevel@ErrorLevel@This is a built-in variable that is set to indicate the success or failure of some of the commands (not all commands change the value of ErrorLevel). A value of 0 usually indicates success, and any other value usually indicates failure. You can also set the value of ErrorLevel yourself.`Of special interest is that RunWait sets ErrorLevel to be the exit code of the program it ran. Most programs yield an exit code of zero if they completed successfully.`Each thread retains its own value of ErrorLevel, meaning that if the current thread is interrupted by another, when the original thread is resumed it will still have its original value of ErrorLevel, not the ErrorLevel that may have been set by the interrupting thread.
+Esc@Esc@ 
+Escape@Escape@ 
+Exception@Exception(Message)@Creates an object with properties, also common to exceptions created by runtime errors.
+Exist@Exist@ 
+Exit@Exit [ExitCode]@Exits the current thread or (if the script is not persistent and contains no hotkeys) the entire script.
+ExitApp@ExitApp [ExitCode]@Terminates the script unconditionally.
+Exp()@Exp(Number)@Returns e (which is approximately 2.71828182845905) raised to the Nth power.
+Exp@Exp@ 
+Expand@Expand@ 
+ExStyle@ExStyle@ 
+F1@F1@ 
+F10@F10@ 
+F11@F11@ 
+F12@F12@ 
+F13@F13@ 
+F14@F14@ 
+F15@F15@ 
+F16@F16@ 
+F17@F17@ 
+F18@F18@ 
+F19@F19@ 
+F2@F2@ 
+F20@F20@ 
+F21@F21@ 
+F22@F22@ 
+F23@F23@ 
+F24@F24@ 
+F3@F3@ 
+F4@F4@ 
+F5@F5@ 
+F6@F6@ 
+F7@F7@ 
+F8@F8@ 
+F9@F9@ 
+False@False@ 
+FileAppend@FileAppend [Text, Filename]@Writes text to the end of a file (first creating the file, if necessary).
+FileCopy@FileCopy Source, Dest [, Flag (1 = overwrite)]@Copies one or more files.
+FileCopyDir@FileCopyDir Source, Dest [, Flag]@Copies a folder along with all its sub-folders and files (similar to xcopy).
+FileCreateDir@FileCreateDir Path@Creates a directory/folder.
+FileCreateShortcut@FileCreateShortcut Target, C:\My Shortcut.lnk [, WorkingDir, Args, Description, IconFile, ShortcutKey, IconNumber@Creates a shortcut (.lnk) file.
+FileDelete@FileDelete FilePattern@Deletes one or more files.
+FileEncoding@FileEncoding [Encoding]@Sets the default encoding for FileRead, FileReadLine, Loop Read, FileAppend, and FileOpen().
+FileExist()@FileExist("FilePattern")@Checks for the existence of a file or folder and returns its attributes.
+FileGetAttrib@FileGetAttrib OutputVar(RASHNDOCT) [, Filename]@Reports whether a file or folder is read-only, hidden, etc.
+FileGetShortcut@FileGetShortcut LinkFile [, OutTarget, OutDir, OutArgs, OutDescription, OutIcon, OutIconNum, OutRunState]@Retrieves information about a shortcut (.lnk) file, such as its target file.
+FileGetSize@FileGetSize OutputVar [, Filename, Units]@Retrieves the size of a file.
+FileGetTime@FileGetTime OutputVar [, Filename, WhichTime (M, C, or A -- default is M)]@Retrieves the datetime stamp of a file or folder.
+FileGetVersion@FileGetVersion OutputVar [, Filename]@Retrieves the version of a file.
+FileInstall@FileInstall Source, Dest [, Flag (1 = overwrite)]@Includes the specified file inside the compiled version of the script.
+FileMove@FileMove Source, Dest [, Flag (1 = overwrite)]@Moves or renames one or more files.
+FileMoveDir@FileMoveDir Source, Dest [, Flag (2 = overwrite)]@Moves a folder along with all its sub-folders and files. It can also rename a folder.
+FileOpen()@FileOpen(Filename, Flags, [Encoding])@Opens a file to read specific content from it and/or to write new content into it.
+FileRead@FileRead OutputVar, Filename@Reads a file's contents into a variable.
+FileReadLine@FileReadLine OutputVar, Filename, LineNum@Reads the specified line from a file and stores the text in a variable.
+FileRecycle@FileRecycle FilePattern@Sends a file or directory to the recycle bin if possible, or permanently deletes it.
+FileRecycleEmpty@FileRecycleEmpty [C:\]@Empties the recycle bin.
+FileRemoveDir@FileRemoveDir Path [, Recurse? (1 = yes)]@Deletes a folder.
+FileSelectFile@FileSelectFile OutputVar [, Options, RootDir[\DefaultFilename], Prompt, Filter]@Displays a standard dialog that allows the user to open or save file(s).
+FileSelectFolder@FileSelectFolder OutputVar [, *StartingFolder, Options, Prompt]@Displays a standard dialog that allows the user to select a folder.
+FileSetAttrib@FileSetAttrib Attributes(+-^RASHNOT) [, FilePattern, OperateOnFolders?, Recurse?]@Changes the attributes of one or more files or folders. Wildcards are supported.
+FileSetTime@FileSetTime [YYYYMMDDHH24MISS, FilePattern, WhichTime (M|C|A), OperateOnFolders?, Recurse?]@Changes the datetime stamp of one or more files or folders. Wildcards are supported.
+FileSystem@FileSystem@ 
+Finally@Finally Statement@Ensures that one or more statements (commands or expressions) are always executed after the execution of a try statement.
+First@First@ 
+Flash@Flash@ 
+Float@Float@ 
+FloatFast@FloatFast@ 
+Floor()@Floor(Number)@Returns Number rounded down to the nearest integer (without any .00 suffix).
+Floor@Floor@ 
+Focus@Focus@ 
+Font@Font@ 
+For@For Key, [Value] in Expression@Repeats a series of commands once for each key-value pair in an object.
+Format()@Format(FormatStr [, Values...])@Formats a variable number of input values according to a format string.
+FormatTime@FormatTime OutputVar [, YYYYMMDDHH24MISS, Format]@Transforms a YYYYMMDDHH24MISS timestamp into the specified date/time format.
+Func()@Func(FunctionName)@Retrieves a reference to the specified function.
+GetKeyName()@GetKeyName(Key)@Retrieves the name/text of a key.
+GetKeySC()@GetKeySC(Key)@Retrieves the scan code of a key.
+GetKeyState()@GetKeyState(KeyName [, "P" or "T"])@Checks if a keyboard key or mouse/joystick button is down or up. Also retrieves joystick status.
+GetKeyState@GetKeyState OutputVar, WhichKey [, Mode (P|T)]@Checks if a keyboard key or mouse/joystick button is down or up. Also retrieves joystick status.
+GetKeyVK()@GetKeyVK(Key)@Retrieves the virtual key code of a key.
+global@global@To refer to an existing global variable inside a function (or create a new one), declare the variable as global prior to using it.
+Gosub@Gosub Label@Jumps to the specified label and continues execution until Return is encountered.
+Goto@Goto Label@Jumps to the specified label and continues execution.
+Grid@Grid@ 
+Group@Group@ 
+GroupActivate@GroupActivate GroupName [, R]@Activates the next window in a window group that was defined with GroupAdd.
+GroupAdd@GroupAdd GroupName, WinTitle [, WinText, Label, ExcludeTitle, ExcludeText]@Adds a window specification to a window group, creating the group if necessary.
+GroupBox@GroupBox@ 
+GroupClose@GroupClose GroupName [, A|R]@Closes the active window if it was just activated by GroupActivate or GroupDeactivate. It then activates the next window in the series. It can also close all windows in a group.
+GroupDeactivate@GroupDeactivate GroupName [, R]@Similar to GroupActivate except activates the next window not in the group.
+Gui@Gui sub-command [, Param2, Param3, Param4]@Creates and manages windows and controls. Such windows can be used as data entry forms or custom user interfaces.
+GuiClose@GuiClose@ 
+GuiContextMenu@GuiContextMenu@ 
+GuiControl@GuiControl Sub-command, ControlID [, Param3]@Makes a variety of changes to a control in a GUI window.
+GuiControlGet@GuiControlGet OutputVar [, Sub-command, ControlID, Param4]@Retrieves various types of information about a control in a GUI window.
+GuiDropFiles@GuiDropFiles@ 
+GuiEscape@GuiEscape@ 
+GuiSize@GuiSize@ 
+Hdr@Hdr@ 
+Hidden@Hidden@ 
+Hide@Hide@ 
+High@High@ 
+HKCC@HKCC@ 
+HKCR@HKCR@ 
+HKCU@HKCU@ 
+HKEY_CLASSES_ROOT@HKEY_CLASSES_ROOT@ 
+HKEY_CURRENT_CONFIG@HKEY_CURRENT_CONFIG@ 
+HKEY_CURRENT_USER@HKEY_CURRENT_USER@ 
+HKEY_LOCAL_MACHINE@HKEY_LOCAL_MACHINE@ 
+HKEY_USERS@HKEY_USERS@ 
+HKLM@HKLM@ 
+HKU@HKU@ 
+Home@Home@ 
+Hotkey@Hotkey KeyName [, Label, Options]@Creates, modifies, enables, or disables a hotkey while the script is running.
+Hours@Hours@ 
+HScroll@HScroll@ 
+Hwnd@Hwnd@ 
+Icon@Icon@ 
+IconSmall@IconSmall@ 
+ID@ID@ 
+IDLast@IDLast@ 
+If@If (expression)@Specifies one or more statements to execute if an expression evaluates to true.
+If Between@If Var between Low and High@Checks whether a variable's contents are numerically or alphabetically between two values (inclusive).
+If Contains@If Var [not] contains Value, Value2@Checks whether a variable's contents match one of the items in a list.
+If In@If Var in Value, Value2@Checks whether a variable's contents match one of the items in a list.
+If Is@If Var is integer|float|number|digit|xdigit|alpha|upper|lower|alnum|space|time@Checks whether a variable's contents are numeric, uppercase, etc.
+IfEqual@IfEqual Var, Value@Deprecated: Legacy If statements are not recommended for use in new scripts.
+IfExist@IfExist File|Dir|Pattern@Checks for the existence of a file or folder.`Deprecated: These commands are not recommended for use in new scripts. Use the FileExist function instead.
+IfGreater@IfGreater Var, Value@Deprecated: Legacy If statements are not recommended for use in new scripts.
+IfGreaterOrEqual@IfGreaterOrEqual Var, Value@Deprecated: Legacy If statements are not recommended for use in new scripts.
+IfInString@IfInString Var, SearchString@Deprecated: Legacy If statements are not recommended for use in new scripts. Use the InStr function instead.
+IfLess@IfLess Var, Value@Deprecated: Legacy If statements are not recommended for use in new scripts.
+IfLessOrEqual@IfLessOrEqual Var, Value@Deprecated: Legacy If statements are not recommended for use in new scripts.
+IfMsgBox@IfMsgBox Yes|No|OK|Cancel|Abort|Ignore|Retry|Timeout@Checks which button was pushed by the user during the most recent MsgBox command.
+IfNotEqual@IfNotEqual Var, Value@Deprecated: Legacy If statements are not recommended for use in new scripts.
+IfNotExist@IfNotExist File|Dir|Pattern@Checks for the existence of a file or folder.`Deprecated: These commands are not recommended for use in new scripts. Use the FileExist function instead.
+IfNotInString@IfNotInString Var, SearchString@Checks if a variable contains the specified string.`Deprecated: These commands are not recommended for use in new scripts. Use the InStr function instead.
+IfWinActive@IfWinActive [WinTitle, WinText, ExcludeTitle, ExcludeText]@Checks if the specified window exists and is currently active (foremost). If it is, WinActive() returns its Unique ID (HWND).
+IfWinExist@IfWinExist [WinTitle, WinText, ExcludeTitle, ExcludeText]@Checks if a matching window exists. If it is, WinExist() returns the Unique ID (HWND) of the first matching window.
+IfWinNotActive@IfWinNotActive [WinTitle, WinText, ExcludeTitle, ExcludeText]@Checks if the specified window exists and is currently active (foremost). If it is, WinActive() returns its Unique ID (HWND).
+IfWinNotExist@IfWinNotExist [WinTitle, WinText, ExcludeTitle, ExcludeText]@Checks if a matching window exists. If it is, WinExist() returns the Unique ID (HWND) of the first matching window.
+Ignore@Ignore@ 
+IL_Add()@IL_Add(ImageListID, Filename [, IconNumber, ResizeNonIcon?])@Adds an icon or picture to the specified ImageListID and returns the new icon's index (1 is the first icon, 2 is the second, and so on).
+IL_Create()@IL_Create([InitialCount, GrowCount, LargeIcons?])@Creates a new ImageList, initially empty, and returns the unique ID of the ImageList (or 0 upon failure).
+IL_Destroy()@IL_Destroy(ImageListID)@Deletes the specified ImageList and returns 1 upon success and 0 upon failure.
+ImageList@ImageList@ 
+ImageSearch@ImageSearch OutputVarX, OutputVarY, X1, Y1, X2, Y2, ImageFile@Searches a region of the screen for an image.
+In@In@ 
+IniDelete@IniDelete Filename, Section [, Key]@Deletes a value from a standard format .ini file.
+IniRead@IniRead OutputVar, Filename, Section, Key [, Default]@Reads a value, section or list of section names from a standard format .ini file.
+IniWrite@IniWrite Value, Filename, Section, Key@Writes a value or section to a standard format .ini file.
+Input@Input [OutputVar, Options, EndKeys, MatchList]@Waits for the user to type a string.
+InputBox@InputBox OutputVar [, Title, Prompt, HIDE, Width, Height, X, Y, Locale Timeout Default@Displays an input box to ask the user to enter a string.
+Ins@Ins@ 
+Insert@Insert@ 
+InStr()@InStr(Haystack, Needle [, CaseSensitive?, StartingPos])@Searches for a given occurrence of a string, from the left or the right.
+Integer@Integer@ 
+IntegerFast@IntegerFast@ 
+Interrupt@Interrupt@ 
+Is@Is@ 
+IsByRef()@IsByRef(Var)@Returns a non-zero number if the specified ByRef parameter was supplied with a variable.
+IsFunc()@IsFunc(FunctionName)@Returns a non-zero number if the specified function exists in the script.
+IsLabel()@IsLabel(LabelName)@Returns a non-zero number if the specified label exists in the script.
+IsObject()@IsObject(Object)@Returns a non-zero number if the specified value is an object.
+italic@italic@ 
+Join@Join@ 
+Joy1@Joy1@ 
+Joy10@Joy10@ 
+Joy11@Joy11@ 
+Joy12@Joy12@ 
+Joy13@Joy13@ 
+Joy14@Joy14@ 
+Joy15@Joy15@ 
+Joy16@Joy16@ 
+Joy17@Joy17@ 
+Joy18@Joy18@ 
+Joy19@Joy19@ 
+Joy2@Joy2@ 
+Joy20@Joy20@ 
+Joy21@Joy21@ 
+Joy22@Joy22@ 
+Joy23@Joy23@ 
+Joy24@Joy24@ 
+Joy25@Joy25@ 
+Joy26@Joy26@ 
+Joy27@Joy27@ 
+Joy28@Joy28@ 
+Joy29@Joy29@ 
+Joy3@Joy3@ 
+Joy30@Joy30@ 
+Joy31@Joy31@ 
+Joy32@Joy32@ 
+Joy4@Joy4@ 
+Joy5@Joy5@ 
+Joy6@Joy6@ 
+Joy7@Joy7@ 
+Joy8@Joy8@ 
+Joy9@Joy9@ 
+JoyAxes@JoyAxes@ 
+JoyButtons@JoyButtons@ 
+JoyInfo@JoyInfo@ 
+JoyName@JoyName@ 
+JoyPOV@JoyPOV@ 
+JoyR@JoyR@ 
+JoyU@JoyU@ 
+JoyV@JoyV@ 
+JoyX@JoyX@ 
+JoyY@JoyY@ 
+JoyZ@JoyZ@ 
+KeyHistory@KeyHistory@Displays script info and a history of the most recent keystrokes and mouse clicks.
+KeyWait@KeyWait KeyName [, Options]@Waits for a key or mouse/joystick button to be released or pressed down.
+Label@Label@ 
+LAlt@LAlt@ 
+LastFound@LastFound@ 
+LastFoundExist@LastFoundExist@ 
+Launch_App1@Launch_App1@ 
+Launch_App2@Launch_App2@ 
+Launch_Mail@Launch_Mail@ 
+Launch_Media@Launch_Media@ 
+LButton@LButton@ 
+LControl@LControl@ 
+LCtrl@LCtrl@ 
+Left@Left@ 
+Limit@Limit@ 
+Lines@Lines@ 
+List@List@ 
+ListBox@ListBox@ 
+ListHotkeys@ListHotkeys@Displays the hotkeys in use by the current script, whether their subroutines are currently running, and whether or not they use the keyboard or mouse hook.
+ListLines@ListLines [On|Off]@Displays the script lines most recently executed.
+ListVars@ListVars@Displays the script's variables: their names and current contents.
+ListView@ListView@ 
+Ln()@Ln(Number)@Returns the natural logarithm (base e) of Number.
+Ln@Ln@ 
+local@local@Local variables are specific to a single function and are visible only inside that function. Consequently, a local variable may have the same name as a global variable and both will have separate contents. Separate functions may also safely use the same variable names.
+Lock@Lock@ 
+Log()@Log(Number)@Returns the logarithm (base 10) of Number.
+Log@Log@ 
+Logoff@Logoff@ 
+Loop <file>@Loop FilePattern [, IncludeFolders?, Recurse?]@Retrieves the specified files or folders, one at a time.
+Loop parse@Loop Parse, InputVar [, Delimiters|CSV, OmitChars]@Retrieves substrings (fields) from a string, one at a time.
+Loop read@Loop Read, InputFile [, OutputFile]@Retrieves the lines in a text file, one at a time (performs better than FileReadLine).
+Loop reg@Loop HKLM|HKU|HKCU|HKCR|HKCC [, Key, IncludeSubkeys?, Recurse?]@Retrieves the contents of the specified registry subkey, one item at a time.
+Loop@Loop [Count]@Performs a series of commands repeatedly: either the specified number of times or until break is encountered.
+Low@Low@ 
+Lower@Lower@ 
+Lowercase@Lowercase@ 
+LShift@LShift@ 
+LTrim()@LTrim(String, OmitChars = " 't")@Trims characters from the beginning and/or end of a string.
+LTrim@LTrim@ 
+LV_Add()@LV_Add([Options, Col1, Col2, ...])@Adds a new row to the bottom of the list.
+LV_Delete()@LV_Delete([RowNumber])@Deletes the specified row or all rows.
+LV_DeleteCol()@LV_DeleteCol(ColumnNumber)@Deletes the specified column and all of the contents beneath it.
+LV_GetCount()@LV_GetCount(["S"])@Returns the total number of rows or columns, or the number of selected rows only.
+LV_GetNext()@LV_GetNext([StartingRowNumber, "C|F"])@Returns the row number of the next selected, checked, or focused row.
+LV_GetText()@LV_GetText(OutputVar, RowNumber [, ColumnNumber])@Retrieves the text at the specified RowNumber and ColumnNumber and stores it in OutputVar.
+LV_Insert()@LV_Insert(RowNumber [, Options, Col1, Col2, ...])@Inserts a new row before the specified row.
+LV_InsertCol()@LV_InsertCol(ColumnNumber [, Options, ColumnTitle])@Inserts a new column before the specified column.
+LV_Modify()@LV_Modify(RowNumber, Options [, NewCol1, NewCol2, ...])@Modifies the attributes and/or text of a row.
+LV_ModifyCol()@LV_ModifyCol([ColumnNumber, Options, ColumnTitle])@Modifies the attributes and/or text of the specified column and its header.
+LV_SetImageList()@LV_SetImageList(ImageListID [, 0|1|2])@Sets or replaces the ListView's ImageList.
+LWin@LWin@ 
+LWinDown@LWinDown@ 
+LWinUp@LWinUp@ 
+MainWindow@MainWindow@ 
+Margin@Margin@ 
+Maximize@Maximize@ 
+MaximizeBox@MaximizeBox@ 
+MaxSize@MaxSize@ 
+MButton@MButton@ 
+Media_Next@Media_Next@ 
+Media_Play_Pause@Media_Play_Pause@ 
+Media_Prev@Media_Prev@ 
+Media_Stop@Media_Stop@ 
+Menu@Menu MenuName, Cmd [, P3, P4, P5]@Creates, deletes, modifies and displays menus and menu items. Changes the tray icon and its tooltip. Controls whether the main window of a compiled script can be opened.
+Minimize@Minimize@ 
+MinimizeBox@MinimizeBox@ 
+MinMax@MinMax@ 
+MinSize@MinSize@ 
+Minutes@Minutes@ 
+Mod()@Mod(Dividend, Divisor)@Returns the remainder when Dividend is divided by Divisor.
+Mod@Mod@ 
+MonthCal@MonthCal@ 
+Mouse@Mouse@ 
+MouseClick@MouseClick WhichButton [, X, Y, ClickCount, Speed, D|U, R]@Clicks or holds down a mouse button, or turns the mouse wheel. NOTE: The Click command is generally more flexible and easier to use.
+MouseClickDrag@MouseClickDrag WhichButton, X1, Y1, X2, Y2 [, Speed, R]@Clicks and holds the specified mouse button, moves the mouse to the destination coordinates, then releases the button.
+MouseGetPos@MouseGetPos [OutputVarX, OutputVarY, OutputVarWin, OutputVarControl, 1|2|3]@Retrieves the current position of the mouse cursor, and optionally which window and control it is hovering over.
+MouseMove@MouseMove X, Y [, Speed, R]@Moves the mouse cursor.
+Move@Move@ 
+MsgBox@MsgBox [Options, Title, Text, Timeout]@Displays the specified text in a small window containing one or more buttons (such as Yes and No).
+Multi@Multi@ 
+NA@NA@ 
+No@No@ 
+NoActivate@NoActivate@ 
+NoDefault@NoDefault@ 
+NoHide@NoHide@ 
+NoIcon@NoIcon@ 
+NoMainWindow@NoMainWindow@ 
+norm@norm@ 
+Normal@Normal@ 
+NoSort@NoSort@ 
+NoSortHdr@NoSortHdr@ 
+NoStandard@NoStandard@ 
+Not@Not@ 
+NoTab@NoTab@ 
+NoTimers@NoTimers@ 
+Number@Number@ 
+NumGet() [@NumGet(VarOrAddress [, Offset = 0, Type = "UInt"])@Returns the binary number stored at the specified address+offset.
+NumLock@NumLock@ 
+Numpad0@Numpad0@ 
+Numpad1@Numpad1@ 
+Numpad2@Numpad2@ 
+Numpad3@Numpad3@ 
+Numpad4@Numpad4@ 
+Numpad5@Numpad5@ 
+Numpad6@Numpad6@ 
+Numpad7@Numpad7@ 
+Numpad8@Numpad8@ 
+Numpad9@Numpad9@ 
+NumpadAdd@NumpadAdd@ 
+NumpadClear@NumpadClear@ 
+NumpadDel@NumpadDel@ 
+NumpadDiv@NumpadDiv@ 
+NumpadDot@NumpadDot@ 
+NumpadDown@NumpadDown@ 
+NumpadEnd@NumpadEnd@ 
+NumpadEnter@NumpadEnter@ 
+NumpadHome@NumpadHome@ 
+NumpadIns@NumpadIns@ 
+NumpadLeft@NumpadLeft@ 
+NumpadMult@NumpadMult@ 
+NumpadPgdn@NumpadPgdn@ 
+NumpadPgup@NumpadPgup@ 
+NumpadRight@NumpadRight@ 
+NumpadSub@NumpadSub@ 
+NumpadUp@NumpadUp@ 
+NumPut()@NumPut(Number, VarOrAddress [, Offset = 0, Type = "UInt"])@Stores a number in binary format at the specified address+offset.
+ObjAddRef()@ObjAddRef(Ptr)@Increments an object's reference count.
+ObjRelease()@ObjRelease(Ptr)@Decrements an object's reference count.
+Off@Off@ 
+Ok@Ok@ 
+On@On@ 
+OnExit@OnExit [Label]@Specifies a callback function or subroutine to run automatically when the script exits.
+OnMessage() [@OnMessage(MsgNumber [, "FunctionName"])@Specifies a function or function object to call automatically when the script receives the specified message.
+Or@Or@ 
+OutputDebug@OutputDebug, % TEXT@Sends a string to the debugger (if any) for display.
+OwnDialogs@OwnDialogs@ 
+Owner@Owner@ 
+Parent@Parent@ 
+Parse@Parse@ 
+Password@Password@ 
+Pause@Pause [On|Off|Toggle, OperateOnUnderlyingThread?]@Pauses the script's current thread.
+PgDn@PgDn@ 
+PgUp@PgUp@ 
+Pic@Pic@ 
+Picture@Picture@ 
+Pixel@Pixel@ 
+PixelGetColor@PixelGetColor OutputVar, X, Y [, Alt|Slow|RGB]@Retrieves the color of the pixel at the specified x, y coordinates.
+PixelSearch@PixelSearch OutputVarX, OutputVarY, X1, Y1, X2, Y2, ColorID [, Variation@Searches a region of the screen for a pixel of the specified color.
+Pos@Pos@ 
+PostMessage@PostMessage Msg, [wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]@Sends a message to a window or control (SendMessage additionally waits for acknowledgement).
+Pow@Pow@ 
+PrintScreen@PrintScreen@ 
+Priority@Priority@ 
+Process@Process Cmd, PID-or-Name [, Param3]@Performs one of the following operations on a process: checks if it exists; changes its priority; closes it; waits for it to close.
+ProcessName@ProcessName@ 
+ProgramFiles@ProgramFiles@ 
+Progress@Progress Param1 [, SubText, MainText, WinTitle, FontName]@Creates or updates a window containing a progress bar or an image.
+Radio@Radio@ 
+RAlt@RAlt@ 
+Random@Random OutputVar [, Min, Max]@Generates a pseudo-random number.
+Range@Range@ 
+RButton@RButton@ 
+RControl@RControl@ 
+RCtrl@RCtrl@ 
+Read@Read@ 
+ReadOnly@ReadOnly@ 
+Realtime@Realtime@ 
+Redraw@Redraw@ 
+REG_BINARY@REG_BINARY@ 
+REG_DWORD@REG_DWORD@ 
+REG_EXPAND_SZ@REG_EXPAND_SZ@ 
+REG_MULTI_SZ@REG_MULTI_SZ@ 
+REG_SZ@REG_SZ@ 
+RegDelete@RegDelete HKLM|HKU|HKCU|HKCR|HKCC, SubKey [, ValueName]@Deletes a subkey or value from the registry.
+RegExMatch()@RegExMatch(Haystack, NeedleRegEx [, UnquotedOutputVar = "", StartingPos = 1])@Determines whether a string contains a pattern (regular expression).
+RegExReplace()@RegExReplace(Haystack, NeedleRegEx [, Replacement = "", OutputVarCount = "", Limit = -1, StartingPos = 1])@Replaces occurrences of a pattern (regular expression) inside a string.
+Region@Region@ 
+RegisterCallback()@RegisterCallback("Functionname" [, Options = "", ParamCount = FormalCount, EventInfo = Address])@Creates a machine-code address that when called, redirects the call to a function in the script.
+RegRead@RegRead OutputVar, HKLM|HKU|HKCU|HKCR|HKCC, SubKey [, ValueName]@Reads a value from the registry.
+RegWrite@RegWrite REG_SZ|REG_EXPAND_SZ|REG_MULTI_SZ|REG_DWORD|REG_BINARY, HKLM|HKU|HKCU|HKCR|HKCC, SubKey [, ValueName, Value]@Writes a value to the registry.
+Relative@Relative@ 
+Reload@Reload@Replaces the currently running instance of the script with a new one.
+Rename@Rename@ 
+Report@Report@ 
+Resize@Resize@ 
+Restore@Restore@ 
+Retry@Retry@ 
+Return@Return@Returns from a subroutine to which execution had previously jumped via function-call, Gosub, Hotkey activation, GroupActivate, or other means.
+RGB@RGB@ 
+Right@Right@ 
+Round()@Round(Number [, Places])@Returns Number rounded to N decimal places.
+Round@Round@ 
+RShift@RShift@ 
+RTrim()@RTrim(String, OmitChars = " 't")@Trims characters from the end of a string.
+RTrim@RTrim@ 
+Run@Run Target [, WorkingDir, Max|Min|Hide|UseErrorLevel, OutputVarPID]@Runs an external program.
+RunAs@RunAs [User, Password, Domain]@Specifies a set of user credentials to use for all subsequent uses of Run and RunWait.
+RunWait@RunWait Target [, WorkingDir, Max|Min|Hide|UseErrorLevel, OutputVarPID]@Unlike Run, RunWait will wait until the program finishes before continuing.
+RWin@RWin@ 
+RWinDown@RWinDown@ 
+RWinUp@RWinUp@ 
+SB_SetIcon()@SB_SetIcon(Filename [, IconNumber, PartNumber])@Displays a small icon to the left of the text in the specified part.
+SB_SetParts()@SB_SetParts([Width, Width2, ... Width255])@Divides the bar into multiple sections according to the specified widths (in pixels).
+SB_SetText()@SB_SetText(NewText [, PartNumber, Style])@Displays NewText in the specified part of the status bar.
+Screen@Screen@ 
+ScrollLock@ScrollLock@ 
+Seconds@Seconds@ 
+Section@Section@ 
+Send@Send Keys@Sends simulated keystrokes and mouse clicks to the active window.
+SendEvent@SendEvent Keys@SendEvent sends keystrokes using the same method as the pre-1.0.43 Send command. The rate at which keystrokes are sent is determined by SetKeyDelay.
+SendInput@SendInput Keys@SendInput and SendPlay use the same syntax as Send but are generally faster and more reliable. In addition, they buffer any physical keyboard or mouse activity during the send, which prevents the user's keystrokes from being interspersed with those being sent.
+SendLevel@SendLevel Level@Controls which artificial keyboard and mouse events are ignored by hotkeys and hotstrings.
+SendMessage@SendMessage Msg, [wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, ExcludeText, Timeout]@Sends a message to a window or control (SendMessage additionally waits for acknowledgement).
+SendMode@SendMode Event|Play|Input|InputThenPlay@Makes Send synonymous with SendInput or SendPlay rather than the default (SendEvent). Also makes Click and MouseMove/Click/Drag use the specified method.
+SendPlay@SendPlay Keys@SendInput and SendPlay use the same syntax as Send but are generally faster and more reliable. In addition, they buffer any physical keyboard or mouse activity during the send, which prevents the user's keystrokes from being interspersed with those being sent.
+SendRaw@SendRaw Keys@Similar to Send, except that all characters in Keys are interpreted and sent literally. See Raw mode for details.
+Serial@Serial@ 
+SetBatchLines@SetBatchLines -1 | 20ms | LineCount@Determines how fast a script will run (affects CPU utilization).
+SetCapsLockState@SetCapsLockState On|Off|AlwaysOn|AlwaysOff@Sets the state of the CapsLock key. Can also force the key to stay on or off.
+SetControlDelay@SetControlDelay Delay@Sets the delay that will occur after each control-modifying command.
+SetDefaultMouseSpeed@SetDefaultMouseSpeed Speed@Sets the mouse speed that will be used if unspecified in Click and MouseMove/Click/Drag.
+SetEnv@SetEnv Var, Value@Assigns the specified value to a variable.`Deprecated: This command or a legacy assignment is not recommended for use in new scripts. Use expression assignments like Var := Value instead.
+SetFormat@SetFormat float|integer, TotalWidth.DecimalPlaces|hex|d@Sets the format of integers and floating point numbers generated by math operations.`Deprecated: This command is not recommended for use in new scripts. Use the Format function instead.
+SetKeyDelay@SetKeyDelay [Delay, PressDuration]@Sets the delay that will occur after each keystroke sent by Send and ControlSend.
+SetLabel@SetLabel@ 
+SetMouseDelay@SetMouseDelay Delay@Sets the delay that will occur after each mouse movement or click.
+SetNumLockState@SetNumLockState On|Off|AlwaysOn|AlwaysOff@Sets the state of the NumLock key. Can also force the key to stay on or off.
+SetRegView@SetRegView RegView@Sets the registry view used by RegRead, RegWrite, RegDelete and registry loops.
+SetScrollLockState@SetScrollLockState On|Off|AlwaysOn|AlwaysOff@Sets the state of the ScrollLock key. Can also force the key to stay on or off.
+SetStoreCapslockMode@SetStoreCapslockMode On|Off@Whether to restore the state of CapsLock after a Send.
+SetTimer@SetTimer Label [, Period|On|Off]@Causes a subroutine to be launched automatically and repeatedly at a specified time interval.
+SetTitleMatchMode@SetTitleMatchMode Fast|Slow|RegEx|1|2|3@Sets the matching behavior of the WinTitle parameter in commands such as WinWait.
+SetWinDelay@SetWinDelay Delay@Sets the delay that will occur after each windowing command, such as WinActivate.
+SetWorkingDir@SetWorkingDir DirName@Changes the script's current working directory.
+Shift@Shift@ 
+ShiftAltTab@ShiftAltTab@ 
+ShiftDown@ShiftDown@ 
+ShiftUp@ShiftUp@ 
+Show@Show@ 
+Shutdown@Shutdown Code@Shuts down, restarts, or logs off the system.
+Sin()@Sin(Number)@Returns the trigonometric sine of Number.
+Sin@Sin@ 
+Single@Single@ 
+Sleep@Sleep Delay@Waits the specified amount of time before continuing.
+Slider@Slider@ 
+Sort@Sort VarName [, Options]@Arranges a variable's contents in alphabetical, numerical, or random order (optionally removing duplicates).
+SortDesc@SortDesc@ 
+SoundBeep@SoundBeep [Frequency, Duration]@Emits a tone from the PC speaker.
+SoundGet@SoundGet OutputVar [, ComponentType, ControlType, DeviceNumber]@Retrieves various settings from a sound device (master mute, master volume, etc.)
+SoundGetWaveVolume@SoundGetWaveVolume OutputVar [, DeviceNumber]@Retrieves the wave output volume for a sound device.
+SoundPlay@SoundPlay Filename [, wait]@Plays a sound, video, or other supported file type.
+SoundSet@SoundSet NewSetting, [ComponentType, ControlType, DeviceNumber]@Changes various settings of a sound device (master mute, master volume, etc.)
+SoundSetWaveVolume@SoundSetWaveVolume Percent [, DeviceNumber]@Changes the wave output volume for a sound device.
+Space@Space@ 
+SplashImage@SplashImage [ImageFile, Options, SubText, MainText, WinTitle, FontName]@Creates or updates a window containing a progress bar or an image.
+SplashTextOff@SplashTextOff@Creates a customizable text popup window.
+SplashTextOn@SplashTextOn [Width, Height, Title, Text]@Creates a customizable text popup window.
+SplitPath@SplitPath InputVar [, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive]@Separates a file name or URL into its name, directory, extension, and drive.
+Sqrt()@Sqrt(Number)@Returns the square root of Number.
+Sqrt@Sqrt@ 
+Standard@Standard@ 
+static@static@Static variables are always implicitly local, but differ from locals because their values are remembered between calls.
+Status@Status@ 
+StatusBar@StatusBar@ 
+StatusBarGetText@StatusBarGetText OutputVar [, Part#, WinTitle, WinText, ExcludeTitle, ExcludeText]@Retrieves the text from a standard status bar control.
+StatusBarWait@StatusBarWait [BarText, Seconds, Part#, WinTitle, WinText, Interval, ExcludeTitle, ExcludeText]@Waits until a window's status bar contains the specified string.
+StatusCD@StatusCD@ 
+StrGet()@StrGet(Address, [Length], [Encoding = None])@Copies a string from a memory address, optionally converting it from a given code page.
+strike@strike@ 
+StringCaseSense@StringCaseSense On|Off|Locale@Determines whether string comparisons are case sensitive (default is "not case sensitive").
+StringGetPos@StringGetPos OutputVar, InputVar, SearchText [, L#|R#, Offset]@Retrieves the position of the specified substring within a string.`Deprecated: This command is not recommended for use in new scripts. Use the InStr function instead.
+StringLeft@StringLeft OutputVar, InputVar, Count@Retrieves a number of characters from the left-hand side of a string.`Deprecated: These commands are not recommended for use in new scripts. Use the SubStr function instead.
+StringLen@StringLen OutputVar, InputVar@Retrieves the count of how many characters are in a string.`Deprecated: Use the StrLen function instead.
+StringLower@StringLower OutputVar, InputVar [, T]@Converts a string to lowercase.
+StringMid@StringMid OutputVar, InputVar, StartChar [, Count, L]@Retrieves one or more characters from the specified position in a string.`Deprecated: This command is not recommended for use in new scripts. Use the SubStr function instead.
+StringReplace@StringReplace OutputVar, InputVar, SearchText [, ReplaceText, All]@Replaces the specified substring with a new string.`Deprecated: Use the StrReplace function instead.
+StringRight@StringRight OutputVar, InputVar, Count@Retrieves a number of characters from the right-hand side of a string.`Deprecated: These commands are not recommended for use in new scripts. Use the SubStr function instead.
+StringSplit@StringSplit OutputArray, InputVar [, Delimiters, OmitChars]@Separates a string into an array of substrings using the specified delimiters.
+StringTrimLeft@StringTrimLeft OutputVar, InputVar, Count@Removes a number of characters from the left-hand side of a string.`Deprecated: These commands are not recommended for use in new scripts. Use the SubStr function instead.
+StringTrimRight@StringTrimRight OutputVar, InputVar, Count@Removes a number of characters from the right-hand side of a string.`Deprecated: These commands are not recommended for use in new scripts. Use the SubStr function instead.
+StringUpper@StringUpper OutputVar, InputVar [, T]@Converts a string to uppercase.
+StrLen()@StrLen(String)@Retrieves the count of how many characters are in a string.
+StrPut()@StrPut(String, Address, [Length], [Encoding = None])@Copies a string to a memory address, optionally converting it to a given code page.
+StrReplace()@StrReplace(Haystack, SearchText [, ReplaceText, OutputVarCount, Limit := -1])@Replaces the specified substring with a new string.
+StrSplit()@StrSplit(String, [Delimiters, OmitChars])@Separates a string into an array of substrings using the specified delimiters.
+Style@Style@ 
+Submit@Submit@ 
+SubStr()@SubStr(String, StartingPos [, Length])@Retrieves one or more characters from the specified position in a string.
+Suspend@Suspend [On|Off|Toggle|Permit]@Disables or enables all or selected hotkeys and hotstrings.
+SysGet@SysGet OutputVar, Sub-command [, Param3]@Retrieves screen resolution, multi-monitor info, dimensions of system objects, and other system properties.
+SysMenu@SysMenu@ 
+Tab@Tab@ 
+Tab2@Tab2@ 
+TabStop@TabStop@ 
+Tan(Number)@Tan(Number)@Returns the trigonometric tangent of Number.
+Tan@Tan@ 
+Text@Text@ 
+Theme@Theme@ 
+Thread@Thread NoTimers|Priority|Interrupt@Sets the priority or interruptibility of threads. It can also temporarily disable all timers.
+Throw@Throw [Expression]@Signals the occurrence of an error. This signal can be caught by a try-catch statement.
+Tile@Tile@ 
+Time@Time@ 
+Tip@Tip@ 
+ToggleCheck@ToggleCheck@ 
+ToggleEnable@ToggleEnable@ 
+ToolTip@ToolTip [Text, X, Y, WhichToolTip]@Creates an always-on-top window anywhere on the screen.
+ToolWindow@ToolWindow@ 
+Top@Top@ 
+Topmost@Topmost@ 
+TransColor@TransColor@ 
+Transform@Transform OutputVar, Cmd, Value1 [, Value2]@Performs miscellaneous math functions, bitwise operations, and tasks such as ASCII/Unicode conversion.
+Transparent@Transparent@ 
+Tray@Tray@ 
+TrayTip@TrayTip [Title, Text, Seconds, Options]@Creates a balloon message window near the tray icon. On Windows 10, a toast notification may be shown instead.
+TreeView@TreeView@ 
+Trim()@Trim(String, OmitChars = " 't")@Trims characters from the beginning and end of a string.
+True@True@ 
+Try@Try Statement@Guards one or more statements (commands or expressions) against runtime errors and exceptions thrown by the throw command.
+TryAgain@TryAgain@ 
+TV_Add()@TV_Add(Name, [ParentItemID, Options])@Adds a new item to the TreeView and returns its unique Item ID number (or 0 upon failure).
+TV_Delete()@TV_Delete([ItemID])@Deletes the specified item or all items.
+TV_Get()@TV_Get(ItemID, "Expand | Check | Bold")@Returns the ID number of the specified item if it has the specified attribute.
+TV_GetChild()@TV_GetChild(ParentItemID)@Returns the ID number of the specified item's first/top child (or 0 if none).
+TV_GetCount()@TV_GetCount()@Returns the total number of items in the control.
+TV_GetNext()@TV_GetNext([ItemID, "Checked | Full"])@Returns the ID number of the next item below the specified item (or 0 if none).
+TV_GetParent()@TV_GetParent(ItemID)@Returns the specified item's parent as an item ID.
+TV_GetPrev()@TV_GetPrev(ItemID)@Returns the ID number of the sibling above the specified item (or 0 if none).
+TV_GetSelection()@TV_GetSelection()@Returns the selected item's ID number.
+TV_GetText()@TV_GetText(OutputVar, ItemID)@Retrieves the text/name of the specified ItemID and stores it in OutputVar.
+TV_Modify()@TV_Modify(ItemID [, Options, NewName])@Modifies the attributes and/or name of an item.
+Type@Type@ 
+UnCheck@UnCheck@ 
+underline@underline@ 
+Unicode@Unicode@ 
+Unlock@Unlock@ 
+Until@Until Expression@Applies a condition to the continuation of a Loop or For-loop.
+Up@Up@ 
+UpDown@UpDown@ 
+Upper@Upper@ 
+Uppercase@Uppercase@ 
+UrlDownloadToFile@UrlDownloadToFile URL, Filename@Downloads a file from the Internet.
+UseErrorLevel@UseErrorLevel@ 
+VarSetCapacity()@VarSetCapacity(Var [, RequestedCapacity, FillByte])@Enlarges a variable's holding capacity or frees its memory. Normally, this is necessary only for unusual circumstances such as DllCall().
+Vis@Vis@ 
+VisFirst@VisFirst@ 
+Visible@Visible@ 
+Volume_Down@Volume_Down@ 
+Volume_Mute@Volume_Mute@ 
+Volume_Up@Volume_Up@ 
+VScroll@VScroll@ 
+Wait@Wait@ 
+WaitClose@WaitClose@ 
+WantCtrlA@WantCtrlA@ 
+WantF2@WantF2@ 
+WantReturn@WantReturn@ 
+WheelDown@WheelDown@ 
+WheelLeft@WheelLeft@ 
+WheelRight@WheelRight@ 
+WheelUp@WheelUp@ 
+While@While Expression@Performs a series of commands repeatedly until the specified expression evaluates to false.
+WinActivate@WinActivate [WinTitle, WinText, ExcludeTitle, ExcludeText]@Activates the specified window.
+WinActivateBottom@WinActivateBottom [WinTitle, WinText, ExcludeTitle, ExcludeText]@Same as WinActivate except that it activates the bottommost matching window rather than the topmost.
+WinActive()@WinActive("WinTitle" [, "WinText", "ExcludeTitle", "ExcludeText"])@Checks if the specified window exists and is currently active (foremost). If it is, WinActive() returns its Unique ID (HWND).
+WinClose@WinClose [WinTitle, WinText, SecondsToWait, ExcludeTitle, ExcludeText]@Closes the specified window.
+WinExist()@WinExist("WinTitle" [, "WinText", "ExcludeTitle", "ExcludeText"])@Checks if a matching window exists. If it is, WinExist() returns the Unique ID (HWND) of the first matching window.
+WinGet@WinGet OutputVar [, Cmd, WinTitle, WinText, ExcludeTitle, ExcludeText]@Retrieves the specified window's unique ID, process ID, process name, or a list of its controls. It can also retrieve a list of all windows matching the specified criteria.
+WinGetActiveStats@WinGetActiveStats Title, Width, Height, X, Y@Combines the functions of WinGetActiveTitle and WinGetPos into one command.
+WinGetActiveTitle@WinGetActiveTitle OutputVar@Retrieves the title of the active window.
+WinGetClass@WinGetClass OutputVar [, WinTitle, WinText, ExcludeTitle, ExcludeText]@Retrieves the specified window's class name.
+WinGetPos@WinGetPos [X, Y, Width, Height, WinTitle, WinText, ExcludeTitle, ExcludeText]@Retrieves the position and size of the specified window.
+WinGetText@WinGetText OutputVar [, WinTitle, WinText, ExcludeTitle, ExcludeText]@Retrieves the text from the specified window.
+WinGetTitle@WinGetTitle OutputVar [, WinTitle, WinText, ExcludeTitle, ExcludeText]@Retrieves the title of the specified window.
+WinHide@WinHide, [WinTitle, WinText, ExcludeTitle, ExcludeText]@Hides the specified window.
+WinKill@WinKill, [WinTitle, WinText, SecondsToWait, ExcludeTitle, ExcludeText]@Forces the specified window to close.
+WinMaximize@WinMaximize [WinTitle, WinText, ExcludeTitle, ExcludeText]@Enlarges the specified window to its maximum size.
+WinMenuSelectItem@WinMenuSelectItem WinTitle, WinText, Menu [, SubMenu1, SubMenu2, SubMenu3, SubMenu4, SubMenu5, SubMenu6 ExcludeTitle@Invokes a menu item from the menu bar of the specified window.
+WinMinimize@WinMinimize [WinTitle, WinText, ExcludeTitle, ExcludeText]@Collapses the specified window into a button on the task bar.
+WinMinimizeAll@WinMinimizeAll@Minimizes all windows.
+WinMinimizeAllUndo@WinMinimizeAllUndo@Unminimizes all windows.
+WinMove@WinMove WinTitle, WinText, X, Y, [Width, Height, ExcludeTitle, ExcludeText]@Changes the position and/or size of the specified window.
+WinRestore@WinRestore [WinTitle, WinText, ExcludeTitle, ExcludeText]@Unminimizes or unmaximizes the specified window if it is minimized or maximized.
+WinSet@WinSet AlwaysOnTop|Trans, On|Off|Toggle|Value(0-255) [, WinTitle, WinText, ExcludeTitle, ExcludeText]@Makes a variety of changes to the specified window, such as "always on top" and transparency.
+WinSetTitle@WinSetTitle WinTitle, WinText, NewTitle [, ExcludeTitle, ExcludeText]@Changes the title of the specified window.
+WinShow@WinShow [WinTitle, WinText, ExcludeTitle, ExcludeText]@Unhides the specified window.
+WinWait@WinWait WinTitle, WinText, Seconds [, ExcludeTitle, ExcludeText]@Waits until the specified window exists.
+WinWaitActive@WinWaitActive [WinTitle, WinText, Seconds, ExcludeTitle, ExcludeText]@Waits until the specified window is active.
+WinWaitClose@WinWaitClose WinTitle, WinText, Seconds [, ExcludeTitle, ExcludeText]@Waits until the specified window does not exist.
+WinWaitNotActive@WinWaitNotActive [WinTitle, WinText, Seconds, ExcludeTitle, ExcludeText]@Waits until the specified window is not active.
+Wrap@Wrap@ 
+XButton1@XButton1@ 
+XButton2@XButton2@ 
+Xdigit@Xdigit@ 
+xm@xm@ 
+xp@xp@ 
+xs@xs@ 
+Yes@Yes@ 
+ym@ym@ 
+yp@yp@ 
+ys@ys@ 
