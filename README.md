@@ -1,7 +1,7 @@
 # AHK-VSCode
 Personal fix to override Mark Wiemer's pre-emptive suggestions.
 
-Behold, my personal fix of Mark Wiemer's extraneous code suggestions - in short, it'll remove the bumpf and leave only the keyword.
+Behold, my personal fix of Mark Wiemer's extraneous code suggestions - in short, it'll remove the bumpf and leave only the keyword (exemptions are MsgBox and ToolTip, which add a '%' for reasons).
 
 My original plan was to create a hotkey to remove the rest of the line when Shift+Enter was pressed but that screwed up mid-code editing - I needed to just get rid of the whole thing and go back to basics.
 
